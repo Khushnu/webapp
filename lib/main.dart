@@ -34,6 +34,10 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+
+double screenHeight = 0; 
+double screenWidth = 0; 
+
 class _MyAppState extends State<MyApp> {
 
 
@@ -50,31 +54,34 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height; 
+    screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
+      home: const HomePage(),
+      // home: Scaffold(
         
-        body: IndexedStack(index: currentIndex,children: item,), 
-         bottomNavigationBar: BottomNavigationBar(
-               onTap: (index){
-          setState(() {
-            currentIndex = index;
-          });
-               },
-               currentIndex: currentIndex, 
-               backgroundColor: Colors.black,
-               items:  [
-          BottomNavigationBarItem(icon:  const Icon(Icons.home), label: 'Home', backgroundColor: Colors.red.shade300), 
-           BottomNavigationBarItem(icon:  const Icon(Icons.favorite), label: 'Favorite', backgroundColor: Colors.indigo.shade300), 
-            BottomNavigationBarItem(icon:  const Icon(Icons.call), label: 'call', backgroundColor: Colors.teal.shade300), 
-             BottomNavigationBarItem(icon:  const Icon(Icons.delete), label: 'Delete' ,backgroundColor: Colors.purple.shade300)
-          ]),
-      ),
+      //   body: IndexedStack(index: currentIndex,children: item,), 
+      //    bottomNavigationBar: BottomNavigationBar(
+      //          onTap: (index){
+      //     setState(() {
+      //       currentIndex = index;
+      //     });
+      //          },
+      //          currentIndex: currentIndex, 
+      //          backgroundColor: Colors.black,
+      //          items:  [
+      //     BottomNavigationBarItem(icon:  const Icon(Icons.home), label: 'Home', backgroundColor: Colors.red.shade300), 
+      //      BottomNavigationBarItem(icon:  const Icon(Icons.favorite), label: 'Favorite', backgroundColor: Colors.indigo.shade300), 
+      //       BottomNavigationBarItem(icon:  const Icon(Icons.call), label: 'call', backgroundColor: Colors.teal.shade300), 
+      //        BottomNavigationBarItem(icon:  const Icon(Icons.delete), label: 'Delete' ,backgroundColor: Colors.purple.shade300)
+      //     ]),
+      // ),
     );
   }
 }
