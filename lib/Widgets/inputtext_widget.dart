@@ -12,12 +12,12 @@ class InputTextWidget extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: hintText,
                     prefixIcon: icon,
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey
                       )
                     ), 
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey
                       )

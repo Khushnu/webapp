@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:webapp/Screens/call_page.dart';
 import 'package:webapp/Screens/favorite_page.dart';
 import 'package:webapp/firebase_options.dart';
+import 'package:webapp/pallete.dart';
 
 
 import 'Screens/delete_page.dart';
 import 'Screens/home_page.dart';
 
-Future<void> main() async {
+void main()   {
   WidgetsFlutterBinding.ensureInitialized; 
 
   if(kIsWeb){
-    await Firebase.initializeApp(
+     Firebase.initializeApp(
       options: FirebaseOptions(
         apiKey: DefaultFirebaseOptions.web.apiKey,
         appId: DefaultFirebaseOptions.web.appId, 
@@ -22,7 +23,7 @@ Future<void> main() async {
         .projectId)
     );
   } else { 
-    await Firebase.initializeApp();
+     Firebase.initializeApp();
   }
   runApp(const MyApp());
 }
@@ -51,7 +52,8 @@ class _MyAppState extends State<MyApp> {
     const DeletePage()
 
   ];
-  // This widget is the root of your application.
+  
+  
   @override
   Widget build(BuildContext context) {
     screenHeight = MediaQuery.of(context).size.height; 
@@ -59,9 +61,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData.dark(
         useMaterial3: true,
+      ).copyWith(
+        scaffoldBackgroundColor: Pallete.backgroundColor
       ),
       home: const HomePage(),
       // home: Scaffold(
